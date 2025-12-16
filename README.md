@@ -4,7 +4,7 @@ This repository contains the initial environment setup for the Quantium Job Simu
 The goal of this task is to prepare a clean, reproducible Python development environment for building an interactive data visualisation using the Dash framework.
 
 ## Setup Summary
-- Python 3.9 virtual environment
+- Python virtual environment
 - Dependencies managed using `requirements.txt`
 - Core libraries installed:
   - Dash (including testing dependencies)
