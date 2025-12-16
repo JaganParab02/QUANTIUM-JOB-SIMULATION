@@ -1,6 +1,18 @@
-<<<<<<< HEAD
-# Quantium starter repo
-This repo contains everything you need to get started on the program! Good luck!
-=======
-# QUANTIUM-JOB-SIMULATION
->>>>>>> 3397654be96b1313e22ece6159476fc0776d2249
+# Quantium Job Simulation – Dash Environment Setup
+
+This repository contains the initial environment setup for the Quantium Job Simulation project.  
+The goal of this task is to prepare a clean, reproducible Python development environment for building an interactive data visualisation using the Dash framework.
+
+## Setup Summary
+- Python virtual environment
+- Dependencies managed using `requirements.txt`
+- Core libraries installed:
+  - Dash (including testing dependencies)
+  - Pandas
+
+## Project Structure
+- `data/` – Provided CSV datasets for analysis
+- `requirements.txt` – Project dependencies
+- `.gitignore` – Excludes virtual environment and system files
+
+This repository serves as the foundation for subsequent tasks involving data analysis and interactive dashboard development using Dash.
