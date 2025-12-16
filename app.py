@@ -18,80 +18,56 @@ app = Dash(__name__)
 
 app.layout = html.Div(
     style={
-        "minHeight": "100vh",
-        "backgroundColor": "#F4F6FB",
-        "display": "flex",
-        "justifyContent": "center",
-        "paddingTop": "40px",
-        "fontFamily": "Segoe UI, Arial"
+        "fontFamily": "Arial",
+        "backgroundColor": "#f5f7fa",
+        "padding": "30px"
     },
     children=[
         html.Div(
             style={
                 "backgroundColor": "white",
-                "width": "90%",
-                "maxWidth": "1200px",
-                "borderRadius": "16px",
-                "padding": "32px",
-                "boxShadow": "0 10px 30px rgba(0,0,0,0.08)"
+                "padding": "25px",
+                "borderRadius": "8px",
+                "maxWidth": "1000px",
+                "margin": "0 auto"
             },
             children=[
                 html.H1(
-                    "Pink Morsel Sales Analysis",
-                    style={
-                        "textAlign": "center",
-                        "color": "#2992F0",
-                        "marginBottom": "8px"
-                    }
+                    "Pink Morsel Sales Dashboard",
+                    style={"textAlign": "center"}
                 ),
 
                 html.P(
-                    "Sales performance before and after the January 15, 2021 price increase",
-                    style={
-                        "textAlign": "center",
-                        "color": "#616E7C",
-                        "marginBottom": "32px"
-                    }
+                    "Sales trend before and after the price increase on 15 January 2021",
+                    style={"textAlign": "center", "color": "#555"}
                 ),
 
                 html.Div(
-                    style={
-                        "display": "flex",
-                        "justifyContent": "center",
-                        "marginBottom": "20px"
-                    },
+                    style={"textAlign": "center", "marginBottom": "20px"},
                     children=[
                         dcc.RadioItems(
                             id="region-filter",
                             options=[
-                                {"label": "All Regions", "value": "all"},
+                                {"label": "All", "value": "all"},
                                 {"label": "North", "value": "north"},
                                 {"label": "East", "value": "east"},
                                 {"label": "South", "value": "south"},
                                 {"label": "West", "value": "west"}
                             ],
                             value="all",
-                            inline=True,
-                            style={
-                                "fontSize": "15px",
-                                "color": "#7E72ED",
-                                "gap": "20px"
-                            }
+                            inline=True
                         )
                     ]
                 ),
 
-                dcc.Graph(
-                    id="sales-line-chart",
-                    config={"displayModeBar": False}
-                )
+                dcc.Graph(id="sales-chart")
             ]
         )
     ]
 )
 
 @app.callback(
-    Output("sales-line-chart", "figure"),
+    Output("sales-chart", "figure"),
     Input("region-filter", "value")
 )
 def update_chart(region):
@@ -113,7 +89,6 @@ def update_chart(region):
             x=dates,
             y=sales,
             mode="lines",
-            line={"width": 3, "color": "#2992F0"},
             name="Sales"
         )
     )
@@ -126,7 +101,7 @@ def update_chart(region):
         x1=price_date,
         y0=min(sales) if sales else 0,
         y1=max(sales) if sales else 0,
-        line={"color": "#CF72ED", "dash": "dash"}
+        line={"dash": "dash", "color": "red"}
     )
 
     fig.add_annotation(
@@ -134,21 +109,18 @@ def update_chart(region):
         y=max(sales) if sales else 0,
         text="Price Increase",
         showarrow=True,
-        yanchor="bottom",
-        font={"color": "#CF72ED"}
+        yanchor="bottom"
     )
 
     fig.update_layout(
-        plot_bgcolor="white",
-        paper_bgcolor="white",
-        margin={"l": 40, "r": 20, "t": 40, "b": 40},
         xaxis_title="Date",
         yaxis_title="Total Sales",
-        yaxis_tickprefix="$"
+        yaxis_tickprefix="$",
+        plot_bgcolor="white"
     )
 
-    fig.update_xaxes(showgrid=True, gridcolor="#E5E7EB")
-    fig.update_yaxes(showgrid=True, gridcolor="#E5E7EB")
+    fig.update_xaxes(showgrid=True)
+    fig.update_yaxes(showgrid=True)
 
     return fig
 
