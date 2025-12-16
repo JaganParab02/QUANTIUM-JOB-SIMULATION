@@ -1,16 +1,15 @@
 import csv
 from pathlib import Path
-from datetime import datetime
-data_path = Path("data")
 
+data_path = Path("data")
+Path("processed-data").mkdir(exist_ok=True)
 input_files = [
     "daily_sales_data_0.csv",
     "daily_sales_data_1.csv",
     "daily_sales_data_2.csv"
 ]
 
-date = datetime.now().strftime("%Y_%m_%d_%H_%I_%S")
-output_file = Path() / f"processed-data/processed_sales_data_{date}.csv"
+output_file = Path() / f"processed-data/processed_sales_data.csv"
 
 rows = []
 
