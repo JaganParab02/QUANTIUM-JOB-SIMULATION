@@ -1,36 +1,38 @@
----
-
 ```markdown
-# Quantium Job Simulation – Data Processing Task
+# Quantium Job Simulation – Data Processing
 
 This repository contains the solution for the data processing task in the Quantium Job Simulation.  
-The objective of this task is to transform raw transaction data into a clean, structured dataset that can be used for analysis and visualization.
+The objective of this task is to transform raw transaction data into a clean, structured dataset suitable for analysis and visualization.
 
 ---
 
-## 📊 Task Overview
+## 📌 Task Description
 
-Soul Foods provided three CSV files containing transaction-level data for different morsel products sold across regions and dates.  
-The business question focuses specifically on **Pink Morsel** sales.
+Soul Foods provided three CSV files containing transaction data for its morsel product line.  
+Each record represents the quantity sold, price, region, and date of sale.
 
-To support further analysis, the raw data is processed to:
-- Filter only *Pink Morsel* transactions
-- Compute total sales per transaction
-- Output a clean, unified dataset
+The business focus of this task is on **Pink Morsel** sales only.
 
 ---
 
-## 🛠️ Data Processing Logic
+## 🔄 Data Processing Steps
 
-The processing script performs the following steps:
+The processing script performs the following operations:
 
-1. Reads all CSV files from the `data/` directory  
-2. Filters rows where the product is **Pink Morsel**  
-3. Calculates **Sales = Quantity × Price**  
+1. Reads all transaction CSV files from the `data/` directory  
+2. Filters records to include only **Pink Morsel**  
+3. Calculates total sales using:
+
+```
+
+Sales = Quantity × Price
+
+```
+
 4. Retains only the required fields:
-   - `Sales`
-   - `Date`
-   - `Region`
+- Sales
+- Date
+- Region
 5. Writes the processed data to a timestamped CSV file
 
 ---
@@ -60,58 +62,40 @@ quantium-starter-repo/
 
 ## ▶️ How to Run
 
-1. Activate your Python virtual environment
-2. Run the script:
+1. Activate the Python virtual environment
+2. Run the processing script:
 
 ```bash
 python process_csv_sales_data.py
 ````
 
-The processed output file will be generated in the `processed-data/` directory.
+The processed output file will be created automatically in the `processed-data/` directory.
 
 ---
 
-## 🧪 Output Format
+## 📄 Output Format
 
-The generated CSV contains exactly three fields:
+The generated CSV file contains exactly three columns:
 
 ```
 Sales, Date, Region
 ```
 
-Each row represents a single Pink Morsel transaction with computed sales value.
+Each row represents a processed Pink Morsel transaction.
 
 ---
 
-## ✅ Notes
+## 📝 Notes
 
-* The output file name includes the current timestamp to avoid overwriting previous runs
+* Output files are timestamped to prevent overwriting previous runs
 * The `processed-data/` directory is created automatically if it does not exist
 * Virtual environments are excluded from version control
 
 ---
 
-This repository serves as the foundation for subsequent tasks involving data analysis and interactive visualization using Dash.
+This repository provides a clean and reproducible foundation for further analysis and dashboard development using the Dash framework.
 
 ```
 
----
-
-## 🏁 Final Verdict (Reviewer View)
-
-✔ Clean folder separation  
-✔ Defensive, production-safe code  
-✔ Clear README  
-✔ Correct output format  
-✔ Timestamped outputs  
-✔ Excellent job-simulation quality  
-
-You are **100% ready to submit** 🚀  
-
-If you want next:
-- Help with **next Quantium task**
-- README **shorter version**
-- Resume-ready explanation of this task
-
-Just tell me 👍
+just tell me 👍
 ```
