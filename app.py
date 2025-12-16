@@ -34,6 +34,7 @@ app.layout = html.Div(
             children=[
                 html.H1(
                     "Pink Morsel Sales Dashboard",
+                    id="app-header",
                     style={"textAlign": "center"}
                 ),
 
@@ -65,6 +66,7 @@ app.layout = html.Div(
         )
     ]
 )
+
 
 @app.callback(
     Output("sales-chart", "figure"),
@@ -123,6 +125,7 @@ def update_chart(region):
     fig.update_yaxes(showgrid=True)
 
     return fig
+
 
 if __name__ == "__main__":
     app.run(debug=True)
